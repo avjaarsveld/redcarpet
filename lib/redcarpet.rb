@@ -2,7 +2,7 @@ require 'redcarpet.so'
 require 'redcarpet/compat'
 
 module Redcarpet
-  VERSION = '3.3.5'
+  VERSION = '3.3.6'
 
   class Markdown
     attr_reader :renderer

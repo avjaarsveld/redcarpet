@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 3.3.6
+
+* Testing
+
 ## Version 3.3.5
 
 * Added no_style_tags option
