@@ -845,4 +845,8 @@ sdhtml_renderer(struct sd_callbacks *callbacks, struct html_renderopt *options, 
 
 	if (render_flags & HTML_SKIP_HTML || render_flags & HTML_ESCAPE)
 		callbacks->blockhtml = NULL;
+
+	if (render_flags & HTML_SKIP_TAGS)
+		callbacks->header = NULL;
+		callbacks->paragraph = NULL;
 }

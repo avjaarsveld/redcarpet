@@ -35,7 +35,7 @@ class RedcarpetCompat
     :tables           => :tables,
     :generate_toc     => :with_toc_data,
     :xhtml            => :xhtml,
-    :no_headers       => :no_style_tags,
+    :no_style_tags    => :no_style_tags,
 
     # old names with no new mapping
     :gh_blockcode => nil,
