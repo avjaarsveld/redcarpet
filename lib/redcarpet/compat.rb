@@ -35,6 +35,7 @@ class RedcarpetCompat
     :tables           => :tables,
     :generate_toc     => :with_toc_data,
     :xhtml            => :xhtml,
+    :no_headers       => :no_style_tags,
 
     # old names with no new mapping
     :gh_blockcode => nil,
@@ -44,7 +45,7 @@ class RedcarpetCompat
   }
 
   RENDERER_OPTIONS = [:filter_html, :no_images, :no_links, :no_styles,
-    :safe_links_only, :with_toc_data, :hard_wrap, :prettify, :xhtml]
+    :safe_links_only, :with_toc_data, :hard_wrap, :prettify, :xhtml, :no_style_tags]
 
   def rename_extensions(exts)
     exts.map do |old_name|

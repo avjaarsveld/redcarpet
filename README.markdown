@@ -170,6 +170,8 @@ Markdown document had newlines (by default, Markdown ignores these newlines).
 
 * `:link_attributes`: hash of extra attributes to add to links.
 
+* `:no_style_tags`: do not generate tags (`<p>`, `<h1>`, `<h2`, `<img>`).
+
 Example:
 
 ~~~~~ ruby

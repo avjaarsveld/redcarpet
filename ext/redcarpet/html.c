@@ -444,6 +444,16 @@ rndr_raw_block(struct buf *ob, const struct buf *text, void *opaque)
 		sdhtml_is_tag(text->data, size, "style"))
 		return;
 
+	/* Remove tags if the `:no_style_tags` option is enabled */
+	if ((options->flags & HTML_SKIP_TAGS) != 0 &&
+		(
+			sdhtml_is_tag(text->data, size, "p") ||
+			sdhtml_is_tag(text->data, size, "h1") ||
+			sdhtml_is_tag(text->data, size, "h2") ||
+			sdhtml_is_tag(text->data, size, "img")
+		))
+		return;
+
 	if (ob->size)
 		bufputc(ob, '\n');
 
@@ -513,6 +523,16 @@ rndr_raw_html(struct buf *ob, const struct buf *text, void *opaque)
 
 	if ((options->flags & HTML_SKIP_STYLE) != 0 &&
 		sdhtml_is_tag(text->data, text->size, "style"))
+		return 1;
+
+	/* Remove tags if the `:no_style_tags` option is enabled */
+	if ((options->flags & HTML_SKIP_TAGS) != 0 &&
+		(
+			sdhtml_is_tag(text->data, text->size, "p") ||
+			sdhtml_is_tag(text->data, text->size, "h1") ||
+			sdhtml_is_tag(text->data, text->size, "h2") ||
+			sdhtml_is_tag(text->data, text->size, "img")
+		))
 		return 1;
 
 	if ((options->flags & HTML_SKIP_LINKS) != 0 &&

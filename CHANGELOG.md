@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 3.3.5
+
+* Added no_style_tags option
+
 * Multiple single quote pairs are parsed correctly with SmartyPants.
 
   Fix issue [#549](https://github.com/vmg/redcarpet/issues/549).

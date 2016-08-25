@@ -459,6 +459,10 @@ static VALUE rb_redcarpet_html_init(int argc, VALUE *argv, VALUE self)
 		if (rb_hash_aref(hash, CSTR2SYM("no_styles")) == Qtrue)
 			render_flags |= HTML_SKIP_STYLE;
 
+		/* tags */
+		if (rb_hash_aref(hash, CSTR2SYM("no_style_tags")) == Qtrue)
+			render_flags |= HTML_SKIP_TAGS;
+
 		/* safelink */
 		if (rb_hash_aref(hash, CSTR2SYM("safe_links_only")) == Qtrue)
 			render_flags |= HTML_SAFELINK;

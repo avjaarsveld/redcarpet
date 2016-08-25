@@ -245,6 +245,38 @@ class HTMLRenderTest < Redcarpet::TestCase
     assert_no_match %r{<style>}, output
   end
 
+  # no_style_tags tests
+
+  def test_no_style_tags_option_for_paragraph_tags
+    markdown = "<p>Hello foo said bar</p>"
+    output   = render(markdown, with: [:no_style_tags])
+
+    assert_no_match %r{<p>}, output
+  end
+
+  def test_no_style_tags_option_for_h1
+    markdown = "<h1>Love foo said bar</h1>"
+    output   = render(markdown, with: [:no_style_tags])
+
+    assert_no_match %r{<h1>}, output
+  end
+
+  def test_no_style_tags_option_for_h2
+    markdown = "<h2>Love foo said bar</h2>"
+    output   = render(markdown, with: [:no_style_tags])
+
+    assert_no_match %r{<h2>}, output
+  end
+
+  def test_no_style_tags_option_for_img
+    markdown = "<img src='bars.png' />"
+    output   = render(markdown, with: [:no_style_tags])
+
+    assert_no_match %r{<img}, output
+  end
+
+  # no_style_tags tests end
+
   def test_non_ascii_removal_in_header_anchors
     markdown = "# Glühlampe"
     html = "<h1 id=\"gl-hlampe\">Glühlampe</h1>"
