@@ -307,6 +307,11 @@ rndr_header_anchor(struct buf *out, const struct buf *anchor)
 static void
 rndr_header(struct buf *ob, const struct buf *text, int level, void *opaque)
 {
+
+	// if (something)
+		// return 0;
+	return 0;
+
 	struct html_renderopt *options = opaque;
 
 	if (ob->size)
@@ -445,13 +450,12 @@ rndr_raw_block(struct buf *ob, const struct buf *text, void *opaque)
 		return;
 
 	/* Remove tags if the `:no_style_tags` option is enabled */
-	if ((options->flags & HTML_SKIP_TAGS) != 0 &&
-		(
+	if (
 			sdhtml_is_tag(text->data, size, "p") ||
 			sdhtml_is_tag(text->data, size, "h1") ||
 			sdhtml_is_tag(text->data, size, "h2") ||
 			sdhtml_is_tag(text->data, size, "img")
-		))
+		)
 		return;
 
 	if (ob->size)
@@ -526,13 +530,12 @@ rndr_raw_html(struct buf *ob, const struct buf *text, void *opaque)
 		return 1;
 
 	/* Remove tags if the `:no_style_tags` option is enabled */
-	if ((options->flags & HTML_SKIP_TAGS) != 0 &&
-		(
+	if (
 			sdhtml_is_tag(text->data, text->size, "p") ||
 			sdhtml_is_tag(text->data, text->size, "h1") ||
 			sdhtml_is_tag(text->data, text->size, "h2") ||
 			sdhtml_is_tag(text->data, text->size, "img")
-		))
+		)
 		return 1;
 
 	if ((options->flags & HTML_SKIP_LINKS) != 0 &&
